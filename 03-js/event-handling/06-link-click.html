@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmation on link click</title>
+    </head>
+    <body>
+        <a href="https://www.google.com" class="link-confirm">Google search</a>
+        <a href="https://www.twitter.com" class="link-confirm">Twitter</a>
+        <a href="https://www.publicissapient.com">Sapient</a>
+
+        <script>
+            const confirmLinks = document.querySelectorAll( '.link-confirm' );
+
+            confirmLinks.forEach(
+                function( link ) {
+                    link.addEventListener( 'click', function( event ) {
+                        // prevents the default action of the browser for this event when user presses the Cancel button
+                        if( !confirm( 'Are you sure you want to leave this web site?') ) {
+                            event.preventDefault();
+                        }
+                    });
+                }
+            );
+        </script>
+    </body>
+</html>

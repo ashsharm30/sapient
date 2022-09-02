@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <!-- Section 1 follows -->
+            <section>
+                <h2>Section 1</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Amet at tempore beatae in repellendus nobis accusantium
+                    magni maiores sequi soluta quidem aspernatur ratione nam,
+                    nemo dicta delectus adipisci? Repellendus, nobis.
+                </p>
+            </section>
+
+            <!-- Section 2 follows -->
+            <section>
+                <h2>Section 2</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Amet at tempore beatae in repellendus nobis accusantium
+                    magni maiores sequi soluta quidem aspernatur ratione nam,
+                    nemo dicta delectus adipisci? Repellendus, nobis.
+                </p>
+            </section>
+        </main>
+
+        <script>
+            // Objects created for every HTML element -> DOM node
+            console.log(document.children[0]); // html
+            console.dir(document.documentElement); // html
+            console.dir(document.documentElement.children); // collection of html element's children
+            console.dir(document.documentElement.children.length); // 2 (number of children)
+            console.dir(document.documentElement.children[0]); // head
+            console.dir(document.documentElement.children[1]); // body
+            console.dir(document.documentElement.children[1].children[0]); // main
+
+            const mainEl = document.documentElement.children[1].children[0];
+            const section1El = mainEl.children[0];
+            const section2El = mainEl.children[1];
+
+            console.log(mainEl.children[0]); // section 1
+            console.log(mainEl.children[1]); // section 2
+
+            console.log(mainEl.children[0].nextElementSibling); // section 2
+            console.log(mainEl.children[1].previousElementSibling); // section 1
+
+            console.dir(mainEl.children[1].parentNode); // main
+            console.dir(mainEl.parentNode); // body
+            console.dir(mainEl.parentNode.parentNode); // html
+
+            console.log(mainEl.nodeName); // "MAIN"
+            console.log(mainEl.children.nodeName); // nonsense
+            console.log(mainEl.children[0].nodeName); // "SECTION"
+
+            console.log(section1El.nodeType); // 1 -> normal HTML element
+            console.log(section1El.previousSibling.nodeType); // 3 -> represents a text in the HTML
+            console.log(section1El.previousSibling.previousSibling.nodeType); // 8 -> represents a comment in the HTML
+
+            const section1HeadingEl = section1El.children[0];
+            section1HeadingEl.textContent = 'Section 1.1';
+            section1HeadingEl.style.color = 'crimson'; // inline styling
+        </script>
+    </body>
+</html>

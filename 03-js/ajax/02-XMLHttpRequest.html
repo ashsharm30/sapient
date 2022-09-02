@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>XMLHttpRequest</title>
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1>List of workshops</h1>
+                <hr />
+                <div id="workshops-list"></div>
+            </div>
+        </main>
+
+        <script>
+            // old way
+            const xhr = new XMLHttpRequest();
+
+            // let us set up the event handlers
+            // load event fires once the response comes from the server (the function thus executes after a delay)
+            xhr.addEventListener( 'load', function() {
+                const workshopsStr = xhr.responseText;
+                console.log( workshopsStr );
+                console.log( typeof workshopsStr ); // "string"
+                
+                // converts the string of workshops to an array of workshop objects
+                const workshops = JSON.parse( workshopsStr );
+                console.log( workshops );
+            });
+
+            console.log( 1 );
+
+            // configure the request
+            xhr.open( 'GET', 'https://workshops-server.herokuapp.com/workshops' );
+            
+            // Hey browser! please send the request.
+            xhr.send();
+
+            console.log( 2 );
+        </script>
+    </body>
+</html>
